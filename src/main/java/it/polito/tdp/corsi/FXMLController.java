@@ -74,7 +74,21 @@ public class FXMLController {
 
     @FXML
     void doIscritti(ActionEvent event) {
-
+    	String rawCodins = txtCorso.getText();
+    	String codins = rawCodins.trim();
+    	
+    	List <Studente> studenti = GestoreCorso.getStudentiCorso(codins);
+    	if (studenti.isEmpty()) {
+    		txtRisultato.setText("Nessun risultato per il corso "+codins);
+    		txtCorso.clear();
+    		return;
+    	}
+    	String s = studenti.size()+" studenti trovati per il corso "+codins+":\n";
+    	
+    	for(Studente st : studenti) {
+    		s+= st.toString()+"\n";
+    	}
+    	txtRisultato.setText(s);
     }
 
     @FXML

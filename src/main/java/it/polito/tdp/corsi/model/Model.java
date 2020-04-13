@@ -5,18 +5,24 @@ import it.polito.tdp.corsi.db.*;
 
 public class Model {
 	
-	private CorsoDAO dao;
+	private CorsoDAO cDao;
+	private StudenteDAO sDao;
 	
 	public Model() {
 		super();
-		dao = new CorsoDAO();
+		cDao = new CorsoDAO();
+		sDao = new StudenteDAO();
 	}
 
 	public List <Corso> getCorsiPeriodo (int pd) {
-		return dao.getCorsiPeriodo(pd);
+		return cDao.getCorsiPeriodo(pd);
 	}
 
 	public Map <Corso, Integer> getNumStudentiCorsiPeriodo (int pd) {
-		return dao.getNumStudentiCorsiPeriodo(pd);
+		return cDao.getNumStudentiCorsiPeriodo(pd);
+	}
+	
+	public List <Studente> getStudentiCorso(String codins) {
+		return sDao.getStudentiCorso(codins);
 	}
 }
